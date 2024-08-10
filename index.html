@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1 - Simple Calculator</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #282c34;
+            color: #61dafb;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .calculator {
+            display: inline-block;
+            border: 2px solid #61dafb;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #20232a;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 10px;
+            margin-right: 15px;
+            font-size: 18px;
+            background-color: #282c34;
+            color: #61dafb;
+            border: 1px solid #61dafb;
+            border-radius: 5px;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            background-color: #282c34;
+            color: #61dafb;
+            border: 1px solid #61dafb;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 18px;
+            background-color: #61dafb;
+            color: #20232a;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #21a1f1;
+        }
+
+        #result {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h2>Simple Calculator</h2>
+        <input type="number" id="num1" placeholder="Enter number 1">
+        <select id="operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+        </select>
+        <input type="number" id="num2" placeholder="Enter number 2">
+        <br>
+        <button onclick="calculate()">=</button>
+
+        <div id="result">Result: </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Please enter valid numbers.";
+            } else {
+                switch (operation) {
+                    case '+':
+                        result = num1 + num2;
+                        break;
+                    case '-':
+                        result = num1 - num2;
+                        break;
+                    case '*':
+                        result = num1 * num2;
+                        break;
+                    default:
+                        result = "Invalid operation.";
+                }
+            }
+
+            document.getElementById('result').innerText = "Result: " + result;
+        }
+    </script>
+
+</body>
+</html>
